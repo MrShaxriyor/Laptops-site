@@ -1,0 +1,77 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f4f8;
+  padding: 30px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.laptop-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  object-fit: cover;
+  max-height: 300px;
+}
+
+.laptop-card h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #333;
+}
+
+.laptop-card p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.button-group {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.edit {
+  background: #007bff;
+}
+
+.edit:hover {
+  background: #0056b3;
+}
+
+.delete {
+  background: #dc3545;
+}
+
+.delete:hover {
+  background: #a71d2a;
+}
+
+.back {
+  background: #6c757d;
+}
+
+.back:hover {
+  background: #4f565d;
+}

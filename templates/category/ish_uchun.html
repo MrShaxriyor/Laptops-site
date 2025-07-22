@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ish uchun Noutbuklar</title>
+  <link rel="stylesheet" href="{% static 'ish_uchun.css' %}">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">💼 Ish uchun Noutbuklar</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{% url 'get-home' %}">Bosh sahifa</a></li>
+        <li><a href="#products">Mahsulotlar</a></li>
+        <li><a href="{% url 'get-contact' %}">Bog'lanish</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Ishbilarmonlar uchun eng yaxshi noutbuklar</h1>
+    <p>Sifatli, bardoshli va samaradorlikni oshiruvchi modellar.</p>
+  </section>
+
+  <section id="products" class="products">
+  {% for laptop in laptops %}
+    <div class="product-card">
+      {% if laptop.image %}
+        <img src="{{ laptop.image.url }}" alt="{{ laptop.brand }}" class="laptop-img">
+      {% else %}
+        <img src="https://via.placeholder.com/300x200" alt="Rasm yo'q" class="laptop-img">
+      {% endif %}
+      <h3>{{ laptop.brand }}</h3>
+      <p>
+        💻 {{ laptop.cpu }} | 🎮 {{ laptop.gpu }}<br>
+        <strong>💰 {{ laptop.price }} so'm</strong>
+      </p>
+      <a href="{% url "laptop_detail" laptop.id %}">Batafsil</a>
+    </div>
+  {% empty %}
+    <p>Hozircha hech qanday noutbuk mavjud emas.</p>
+  {% endfor %}
+</section>
+
+<div class="back-home-wrapper">
+  <a href="{% url "get-asosiy" %}" class="back-home-btn">⬅️ Bosh sahifaga qaytish</a>
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 Noutbuklar do'koni. Barcha huquqlar himoyalangan.</p>
+  </footer>
+
+</body>
+</html>

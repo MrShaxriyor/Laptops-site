@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f3f3f3;
+  color: #333;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.laptop-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.laptop-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.laptop-card:hover {
+  transform: translateY(-5px);
+}
+
+.laptop-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.laptop-card h3 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+.laptop-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+.laptop-card button {
+  background: linear-gradient(to right, #7b2ff7, #f107a3);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.laptop-card button:hover {
+  background: linear-gradient(to right, #f107a3, #7b2ff7);
+}
+.laptop-img {
+    width: 100%;
+    max-width: 100px; /* Rasm maksimal 300px dan katta bo‘lmaydi */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+.back-home-wrapper {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.back-home-btn {
+  background: linear-gradient(135deg, #1e90ff, #00bcd4);
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.back-home-btn:hover {
+  background: linear-gradient(135deg, #00bcd4, #1e90ff);
+  transform: translateY(-3px);
+}
+
+/* Products */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.product-card img {
+  width: 300px;
+  max-height: 300px; /* bu qo‘shildi */
+  object-fit: cover; /* bu qo‘shildi */
+  border-radius: 8px;
+}
+
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.product-card button {
+  padding: 0.5rem 1.2rem;
+  background-color: #00bcd4;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.product-card button:hover {
+  background-color: #0097a7;
+}

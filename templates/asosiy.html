@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noutbuklar do'koni</title>
+  <link rel="stylesheet" href="{% static 'asosiy.css' %}">
+</head>
+<body>
+
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+  <div class="profile">
+    {% if user.is_authenticated %}
+      <h3>{{ user.username }}</h3>
+      <p>{{ user.email }}</p>
+      <a href="{% url 'get-code' %}" class="edit-icon" title="Profilni yangilash">✏️</a>
+    {% else %}
+      <p><a href="{% url 'get-login' %}">Login</a> yoki <a href="{% url 'get-sign' %}">Ro'yxatdan o'tish</a></p>
+    {% endif %}
+  </div>
+
+  <ul class="menu-items">
+    <li><a href="{% url 'get-asosiy' %}">🏠 Bosh sahifa</a></li>
+    <li><a href="{% url 'create-lap' %}">👤 Post Qo'shish</a></li>
+    <li><a href="{% url 'contact' %}">Aloqa uchun</a></li>
+    <li><a href="{% url 'get-log' %}">🚪 Chiqish</a></li>
+  </ul>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1>💻 Noutbuklar dunyosiga xush kelibsiz!</h1>
+    <p>Bizda eng yangi modeldagi, yuqori sifatli va raqobatbardosh narxlardagi noutbuklar mavjud.</p>
+
+    <!-- 🔍 Qidiruv -->
+    <form action="{% url "search_laptops" %}" method="GET" class="search-form">
+      <input type="text" name="q" placeholder="🔍 Noutbuk qidirish... Brand, Ram Bo'yicha" value="{{ query }}">
+      <button type="submit">Qidirish</button>
+    </form>
+
+    <a href="#categories" class="btn">Mahsulotlarni ko‘rish</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section">
+  <h2>Biz haqimizda</h2>
+  <p>Biz har xil brenddagi noutbuklarni sotamiz: HP, Dell, Lenovo, Asus, Acer va boshqalar.</p>
+</section>
+
+<!-- Categories Section -->
+<section id="categories" class="section">
+  <h2>Category Tanlang</h2>
+  <div class="categories">
+    <a href="{% url 'get-ish-uchun' %}" class="category">Ish uchun noutbuklar</a>
+    <a href="{% url "get-gaming" %}" class="category">O'yin uchun noutbuklar</a>
+    <a href="{% url "get-student" %}" class="category">Talabalar uchun</a>
+    <a href="{% url "get-premium" %}" class="category">Premium modellar</a>
+  </div>
+</section>
+
+<!-- 🔍 Qidiruv natijalari -->
+{% if query %}
+<section class="section">
+  <h2>🔍 "{{ query }}" bo‘yicha natijalar:</h2>
+
+  {% if results %}
+    <div class="laptop-grid">
+      {% for laptop in results %}
+        <div class="laptop-card">
+          <img class="laptop-img" src="{{ laptop.image.url }}" alt="{{ laptop.brand }}">
+          <h3>{{ laptop.brand }} - {{ laptop.cpu }}</h3>
+          <p>GPU: {{ laptop.gpu }}</p>
+          <a href="{% url 'laptop_detail' laptop.id %}">Batafsil ko‘rish</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>❌ Hech qanday natija topilmadi.</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<!-- Blog Section -->
+<section id="blog" class="section">
+  <h2>Yangiliklar</h2>
+  <div class="blog-list">
+    <div class="blog-post">
+      <img src="https://avatars.mds.yandex.net/i?id=1882f92ea67a71694cc11f227aa4c7b2b3f8b226-5858901-images-thumbs&n=13" alt="Blog 1">
+      <h3>Eng yaxshi o'yin noutbuklari 2025</h3>
+      <p>2025-yilda eng yaxshi o'yin noutbuklari ro'yxati bilan tanishing.</p>
+      
+    </div>
+    <div class="blog-post">
+      <img src="https://img2.akspic.ru/attachments/originals/7/8/4/6/3/136487-smartfon-yabloko-tehnologia-tablica-probel-5184x3456.jpg" alt="Blog 2">
+      <h3>Talabalar uchun arzon va samarali variantlar</h3>
+      <p>Byudjetga mos, samarali ishlaydigan noutbuklar tavsiyasi.</p>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Noutbuklar do'koni. All rights reserved.</p>
+</footer>
+</body>
+</html>

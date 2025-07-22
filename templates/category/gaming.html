@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    {% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O'yin uchun noutbuklar</title>
+  <link rel="stylesheet" href="{% static "gaming.css" %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>🎮 O'yin uchun noutbuklar</h1>
+    <p>Quvvatli, tez va o'yinlarga tayyor noutbuklar</p>
+  </header>
+
+  <section id="products" class="products">
+  {% for laptop in laptops %}
+    <div class="product-card">
+      {% if laptop.image %}
+        <img src="{{ laptop.image.url }}" alt="{{ laptop.brand }}" class="laptop-img">
+      {% else %}
+        <img src="https://via.placeholder.com/300x200" alt="Rasm yo'q" class="laptop-img">
+      {% endif %}
+      <h3>{{ laptop.brand }}</h3>
+      <p>
+        💻 {{ laptop.cpu }} | 🎮 {{ laptop.gpu }}<br>
+        <strong>💰 {{ laptop.price }} so'm</strong>
+      </p>
+      <a href="{% url "laptop_detail" laptop.id %}">Batafsil</a>
+    </div>
+  {% empty %}
+    <p>Hozircha hech qanday noutbuk mavjud emas.</p>
+  {% endfor %}
+</section>
+<div class="back-home-wrapper">
+  <a href="{% url "get-asosiy" %}" class="back-home-btn">⬅️ Bosh sahifaga qaytish</a>
+</div>
+
+
+
+</body>
+</html>

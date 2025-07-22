@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noutbuklar do'koni</title>
+  <link rel="stylesheet" href="{% static "contact.css" %}">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">💻 Noutbuklar</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+  <div class="hero-text">
+    <h1>💻 Noutbuklar dunyosiga xush kelibsiz!</h1>
+    <p>Bizda eng yangi modeldagi, yuqori sifatli va raqobatbardosh narxlardagi noutbuklar mavjud. Ish, o‘qish va o‘yin uchun mos variantlarni toping!</p>
+
+  </div>
+</section>
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+  <!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact" class="section">
+  <h2>Bog'lanish</h2>
+  <p>Quyidagi forma orqali biz bilan bog'lanishingiz mumkin. Har qanday savollaringiz yoki buyurtmangiz bo'lsa, yozib qoldiring.</p>
+
+  <form action="{% url 'contact' %}" method="POST" class="contact-form">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Ismingiz" required>
+    <input type="email" name="email" placeholder="Emailingiz" required>
+    <textarea name="message" placeholder="Xabaringizni yozing" required></textarea>
+    <button type="submit">Yuborish</button>
+  </form>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Noutbuklar do'koni. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

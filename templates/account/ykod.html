@@ -1,0 +1,6 @@
+<h2>Emailingizni tasdiqlang</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="email" name="email" placeholder="Emailingiz">
+  <button type="submit">Kod yuborish</button>
+</form>

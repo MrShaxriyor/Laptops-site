@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ laptop.brand }} - Tafsilotlar</title>
+  <link rel="stylesheet" href="{% static 'laptop_detail.css' %}">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="laptop-card">
+      {% if laptop.image %}
+        <img src="{{ laptop.image.url }}" alt="{{ laptop.brand }}">
+      {% endif %}
+      <h2>{{ laptop.brand }}</h2>
+      <p><strong>CPU:</strong> {{ laptop.cpu }}</p>
+      <p><strong>GPU:</strong> {{ laptop.gpu }}</p>
+      <p><strong>Saqlash hajmi:</strong> {{ laptop.storage }}GB</p>
+      <p><strong>Ekran:</strong> {{ laptop.manitor }}</p>
+      <p><strong>Narxi:</strong> {{ laptop.price }} so'm</p>
+    </div>
+
+    <div class="button-group">
+      {% if user == laptop.author %}
+        <a href="{% url "laptop_update" pk=laptop.pk %}" class="btn edit">✏️ Tahrirlash</a>
+        <a href="{% url "laptop_delete" pk=laptop.pk %}" class="btn delete" onclick="return confirm('O‘chirishga ishonchingiz komilmi?')">🗑️ O‘chirish</a>
+      {% endif %}
+      <a href="{% url 'get-asosiy' %}" class="btn back">🔙 Home</a>
+    </div>
+
+  </div>
+
+
+
+  <hr>
+
+<h3>Kommentlar:</h3>
+{% for comment in comments %}
+  <div class="comment">
+    <strong>{{ comment.user.username }}</strong> <small>{{ comment.created_at|date:"d-m-Y H:i" }}</small><br>
+    {{ comment.text }}
+  </div>
+  <hr>
+{% empty %}
+  <p>Hozircha izoh yo‘q.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Izoh qoldirish</button>
+  </form>
+{% else %}
+  <p><a href="{% url 'get-login' %}">Izoh qoldirish uchun tizimga kiring.</a></p>
+{% endif %} 
+</body>
+</html>

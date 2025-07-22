@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noutbuklar do'koni</title>
+  <link rel="stylesheet" href="{% static "about.css" %}">
+  {% comment %} <script defer src="script.js"></script> {% endcomment %}
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">💻 Noutbuklar</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{% url "get-home" %}">Home</a></li>
+        <li><a href="{% url "get-about" %}">About</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="{% url "get-contact" %}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1>Eng so'nggi noutbuklar bizda</h1>
+<p>Biz siz uchun zamonaviy, kuchli va ishonchli noutbuklarni taklif qilamiz. Texnologiyalar olamiga xush kelibsiz!</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+  <h2>Biz haqimizda</h2>
+  <p>Biz har xil brenddagi noutbuklarni sotamiz: HP, Dell, Lenovo, Asus, Acer va boshqalar. Xaridorlarimizga eng yaxshi narx va xizmatni taqdim etishga harakat qilamiz. Mahsulotlarimiz kafolatli va yetkazib berish xizmati mavjud.</p>
+</section>
+
+  <!-- Categories Section -->
+<section id="categories" class="section">
+  <h2>Turkumlar</h2>
+  <div class="categories">
+    <a href="business.html" class="category">Ish uchun noutbuklar</a>
+    <a href="gaming.html" class="category">O'yin uchun noutbuklar</a>
+    <a href="student.html" class="category">Talabalar uchun</a>
+    <a href="premium.html" class="category">Premium modellar</a>
+  </div>
+</section>
+
+
+  <!-- Blog Section -->
+  <section id="blog" class="section">
+  <h2>Yangiliklar</h2>
+  <div class="blog-list">
+    <div class="blog-post">
+      <img src="https://via.placeholder.com/300x150" alt="Blog 1">
+      <h3>Eng yaxshi o'yin noutbuklari 2025</h3>
+      <p>2025-yilda sotuvda mavjud eng yaxshi o'yin uchun noutbuklar ro'yxati bilan tanishing.</p>
+      <a href="#">Batafsil</a>
+    </div>
+    <div class="blog-post">
+      <img src="https://via.placeholder.com/300x150" alt="Blog 2">
+      <h3>Talabalar uchun arzon va samarali variantlar</h3>
+      <p>Byudjetingizga mos, lekin samarali ishlaydigan noutbuklar tavsiyasi.</p>
+      <a href="#">Batafsil</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Noutbuklar do'koni. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
